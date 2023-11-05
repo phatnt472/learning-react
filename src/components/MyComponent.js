@@ -1,29 +1,48 @@
 import React from "react";
 
 class MyComponent extends React.Component {
-
     state = {
-        name: "Phát",
+        firstName: "",
+        lastName: ""
     }
     handleChangeInput = (event) => {
-        this.setState({
-            name: event.target.value
-        })
+        if (event.target["name"] === "fname") {
+            this.setState({
+                firstName: event.target.value
+            })
+        }
+        else if (event.target["name"] === "lname") {
+            this.setState({
+                lastName: event.target.value
+            })
+        }
     }
 
-    handleClick = (event) => {
-        alert("You clicked!")
+    handleSubmit = (event) => {
+        event.preventDefault()
+        console.log(this.state)
     }
+
     render() {
-        const { name } = this.state
+
         return (
             <>
-                {console.log(this.state)}
-                <input type="text" value={name} onChange={(event) => this.handleChangeInput(event)}/>
-                <h1>Đây là 1 Component make by {name}</h1>
-                <button onClick={(e) => this.handleClick(e)}>Click Me</button>
+                {console.log(">>> Call Render() state: ",this.state)}
+                <form>
+                    <label htmlFor="fname">First name:</label><br />
+                    <input type="text" id="fname" name="fname"
+                        value={this.state.firstName}
+                        onChange={(e) => this.handleChangeInput(e)}
+                    /><br />
+                    <label htmlFor="lname">Last name:</label><br />
+                    <input type="text" id="lname" name="lname"
+                        value={this.state.lastName}
+                        onChange={(e) => this.handleChangeInput(e)}
+                    /><br /><br />
+                    <input type="submit" value="Submit" onClick={(e) => this.handleSubmit(e)}/>
+                </form>
             </>
-        )
+        );
     }
 }
 

@@ -5,11 +5,11 @@ import MyComponent from './components/MyComponent'
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
+      <div className='App-header'>
         <img src={logo} className="App-logo" alt="logo" />
-        <MyComponent>Abc</MyComponent>
-      </header>
-    </div> 
+        <MyComponent />
+      </div>
+    </div>
   );
 }
 
