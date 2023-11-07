@@ -6,7 +6,7 @@ class ChildComponent extends React.Component {
 
         return (
             <>
-               {arrJobs.map((value, index) => <div key={index}>{index} - {value.jobName}</div>)}
+               {arrJobs.map((value, index) => <div keys={index}>{index} - {value.jobName}</div>)}
             </>
         );
     }
