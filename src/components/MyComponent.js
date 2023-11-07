@@ -1,51 +1,25 @@
 import React from "react";
+import AddComponent from "./AddComponent";
 import ChildComponent from "./ChildComponent";
+
 class MyComponent extends React.Component {
     state = {
-        firstName: "",
-        lastName: ""
+        arrJob: []
     }
-    handleChangeInput = (event) => {
-        if (event.target["name"] === "fname") {
+    addJob = (job) => {
+        if (!this.state.arrJob.every((value) => value.name === job.name && value.salary === job.salary && Number(job.salary))) {
             this.setState({
-                firstName: event.target.value
-            })
-        }
-        else if (event.target["name"] === "lname") {
-            this.setState({
-                lastName: event.target.value
+                arrJob: [...this.state.arrJob, job]
             })
         }
     }
-
-    handleSubmit = (event) => {
-        event.preventDefault()
-        console.log(this.state)
-    }
-
     render() {
-        let arrJobs = [
-            {jobName: 'tester'},
-            {jobName: 'Devops'},
-            {jobName: 'FE Dev'}
-        ]
+
         return (
             <>
-                {console.log(">>> Call Render() state: ",this.state)}
-                <form>
-                    <label htmlFor="fname">First name:</label><br />
-                    <input type="text" id="fname" name="fname"
-                        value={this.state.firstName}
-                        onChange={(e) => this.handleChangeInput(e)}
-                    /><br />
-                    <label htmlFor="lname">Last name:</label><br />
-                    <input type="text" id="lname" name="lname"
-                        value={this.state.lastName}
-                        onChange={(e) => this.handleChangeInput(e)}
-                    /><br /><br />
-                    <input type="submit" value="Submit" onClick={(e) => this.handleSubmit(e)}/>
-                </form>
-                <ChildComponent arrJobs={arrJobs}/>
+                {console.log(this.state.arrJob)}
+                <AddComponent addJob={this.addJob} />
+                <ChildComponent arrJob={this.state.arrJob} />
 
             </>
         );
