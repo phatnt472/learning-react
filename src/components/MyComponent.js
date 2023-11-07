@@ -24,7 +24,11 @@ class MyComponent extends React.Component {
     }
 
     render() {
-
+        let arrJobs = [
+            {jobName: 'tester'},
+            {jobName: 'Devops'},
+            {jobName: 'FE Dev'}
+        ]
         return (
             <>
                 {console.log(">>> Call Render() state: ",this.state)}
@@ -41,7 +45,7 @@ class MyComponent extends React.Component {
                     /><br /><br />
                     <input type="submit" value="Submit" onClick={(e) => this.handleSubmit(e)}/>
                 </form>
-                <ChildComponent id={1} name={'phát'} age={21}/>
+                <ChildComponent arrJobs={arrJobs}/>
 
             </>
         );

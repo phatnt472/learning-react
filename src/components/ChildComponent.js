@@ -2,11 +2,11 @@ import React from "react";
 
 class ChildComponent extends React.Component {
     render() {
-        const {id, name, age} = this.props
+        const {arrJobs} = this.props
 
         return (
             <>
-               <div>Child Component: {id} - {name} - {age} </div>
+               {arrJobs.map((value, index) => <div key={index}>{index} - {value.jobName}</div>)}
             </>
         );
     }
