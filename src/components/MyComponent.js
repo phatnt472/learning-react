@@ -7,10 +7,13 @@ class MyComponent extends React.Component {
         arrJob: []
     }
     addJob = (job) => {
-        if (!this.state.arrJob.every((value) => value.name === job.name && value.salary === job.salary && Number(job.salary))) {
+        if (!this.state.arrJob.every((value) => value.name === job.name && value.salary === job.salary)) {
             this.setState({
                 arrJob: [...this.state.arrJob, job]
             })
+        }
+        else{
+            alert('Data is exist!')
         }
     }
     render() {
