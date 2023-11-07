@@ -1,12 +1,12 @@
 import React from "react";
 
 class ChildComponent extends React.Component {
-
     render() {
+        const {id, name, age} = this.props
 
         return (
             <>
-               <div>Child Component {this.props.id}</div>
+               <div>Child Component: {id} - {name} - {age} </div>
             </>
         );
     }

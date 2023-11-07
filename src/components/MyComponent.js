@@ -41,9 +41,7 @@ class MyComponent extends React.Component {
                     /><br /><br />
                     <input type="submit" value="Submit" onClick={(e) => this.handleSubmit(e)}/>
                 </form>
-                <ChildComponent id={1}/>
-                <ChildComponent id={2}/>
-                <ChildComponent id={3}/>
+                <ChildComponent id={1} name={'phát'} age={21}/>
 
             </>
         );
