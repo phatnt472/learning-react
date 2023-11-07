@@ -20,11 +20,11 @@ class AddComponent extends React.Component {
     handleSubmit = (event) => {
         event.preventDefault()
 
-        if(this.state.name !== '' && (this.state.salary !== '' || Number(this.state.salary))){
-            this.props.addJob(this.state)
+        if(this.state.name === '' || this.state.salary === '' || isNaN(Number(this.state.salary)) || !isNaN(Number(this.state.name))){
+            alert("Valid Data!")
         }
         else{
-            alert("Valid Data!")
+            this.props.addJob(this.state)
         }
         console.log(">>> Data: ",this.state)
         this.setState({
