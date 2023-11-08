@@ -2,11 +2,11 @@ import React from "react";
 
 class AddComponent extends React.Component {
     state = {
+        id: "",
         name: "",
         salary: ""
     }
-    name = ""
-    salary = ""
+ 
     handleChangeInput = (event) => {
         if (event.target["name"] === "name") {
             this.setState({name: event.target.value})
@@ -15,11 +15,16 @@ class AddComponent extends React.Component {
             this.setState({salary: event.target.value})
 
         }
+        this.setState({
+            id: Math.floor(Math.random()*1001) + 1
+        })
+
     }
 
     handleSubmit = (event) => {
         event.preventDefault()
-
+        
+        console.log(this.state)
         if(this.state.name === '' || this.state.salary === '' || isNaN(Number(this.state.salary)) || !isNaN(Number(this.state.name))){
             alert("Valid Data!")
         }

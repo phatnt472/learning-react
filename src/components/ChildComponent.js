@@ -10,6 +10,10 @@ class ChildComponent extends React.Component {
             isShow: !this.state.isShow
         })
     }
+
+    handleClickDelete = (id) => {
+        this.props.deleteJob(id)
+    }
     render() {
         const { arrJob } = this.props
 
@@ -19,7 +23,10 @@ class ChildComponent extends React.Component {
                 {this.state.isShow ?
                     <button onClick={this.handleShow}>Show</button> :
                     (<>
-                        {arrJob.map((value, index) => <div key={index}>{value.name} - {value.salary}$</div>)}
+                        {arrJob.map((value) =>
+                            <>
+                                <div key={value.id}>{value.name} - {value.salary}$ <span onClick={() => this.handleClickDelete(value.id)}>X</span></div>
+                            </>)}
                         <button onClick={this.handleShow}>Hide</button>
                     </>)
                 }

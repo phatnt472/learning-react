@@ -16,13 +16,20 @@ class MyComponent extends React.Component {
             alert('Data is exist!')
         }
     }
+
+    deleteJob = (id) => {
+        const filterArr = this.state.arrJob.filter((value) => value.id !== id)
+        this.setState({
+            arrJob: [...filterArr]
+        })
+    }
     render() {
 
         return (
             <>
                 {console.log(this.state.arrJob)}
                 <AddComponent addJob={this.addJob} />
-                <ChildComponent arrJob={this.state.arrJob} />
+                <ChildComponent arrJob={this.state.arrJob} deleteJob={this.deleteJob} />
 
             </>
         );
