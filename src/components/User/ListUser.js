@@ -1,6 +1,6 @@
 import React from 'react'
 import axios from 'axios'
-
+import { withRouter } from 'react-router-dom'
 class ListUser extends React.Component {
     state = {
         data: []
@@ -15,10 +15,14 @@ class ListUser extends React.Component {
         }
 
     }
+
+    handleClickName = (id) => {
+        this.props.history.push(`/user/${id}`)
+    }
     render() {
         return <>
-            {this.state.data.length !== 0 ? this.state.data.map((item, index) => <div key={index}>{item.id} - {item.first_name} {item.last_name}</div>) : ""}
+            {this.state.data.length !== 0 ? this.state.data.map((item, index) => <div className="cursor-pointer" key={index} onClick={() => this.handleClickName(item.id)}>{item.id} - {item.first_name} {item.last_name}</div>) : ""}
         </>
     }
 }
-export default ListUser
+export default withRouter(ListUser)
